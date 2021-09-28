@@ -22,11 +22,18 @@ public class MatricesMultiplication {
         System.out.println("Matrix 2:");
         matricesDisplay(matrix2);
         System.out.println("The result by using classical multiplication: ");
-        matricesDisplay(classicalMultiply.classicalMultiplication(matrix1, matrix2));
+        //Check if two matrices can be multiplied
+        if(classicalMultiply.classicalMultiplication(matrix1, matrix2) == null) {
+            System.out.println("Two input matrices can not be multiplied");
+        }
+        else {
+            matricesDisplay(classicalMultiply.classicalMultiplication(matrix1, matrix2));
+        }
+        
     }
 
     /** 
-     * function generate a two-dimensional array 
+     * function generate a two-dimensional array with the same numbers of columns and rows (square matrix)
      * @param size is the size of row and column of a two-dimensional array
      * @return return a two-dimensional array
     */
