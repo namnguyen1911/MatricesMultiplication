@@ -6,17 +6,23 @@ public class MatricesMultiplication {
         //Declaration and Initialization
         Scanner scan = new Scanner(System.in);
         int size = 0;
+        ClassicalMultiplication classicalMultiply = new ClassicalMultiplication();
 
         //Prompt user enter the size of matrices
         System.out.print("Enter the size of the matrix: ");
         size = scan.nextInt();
 
         //Matrix generation
-        int[][] matrix = matricesGenerator(size);
+        int[][] matrix1 = matricesGenerator(size);
+        int[][] matrix2 = matricesGenerator(size);
 
         //Display the matrix
-        System.out.println("Display of matrix:");
-        matricesDisplay(matrix);
+        System.out.println("Matrix 1:");
+        matricesDisplay(matrix1);
+        System.out.println("Matrix 2:");
+        matricesDisplay(matrix2);
+        System.out.println("The result by using classical multiplication: ");
+        matricesDisplay(classicalMultiply.classicalMultiplication(matrix1, matrix2));
     }
 
     /** 
