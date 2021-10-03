@@ -7,12 +7,23 @@ public class MatricesMultiplication {
         Scanner scan = new Scanner(System.in);
         int size = 0;
         ClassicalMultiplication classicalMultiply = new ClassicalMultiplication();
+        long startTime = 0, endTime = 0, duration = 0;
+        int range = 0;
+
 
         //Prompt user enter the size of matrices
         System.out.print("Enter the size of the matrix: ");
         size = scan.nextInt();
+        
+        
+        //Remove the new line character in the input buffer
+        scan.nextLine();
 
-        //Matrix generation
+        //Prompt user enter the sample size of the test
+        System.out.print("Enter the sample size of the test: ");
+        range = scan.nextInt();
+
+        // Sqaure Matrices generation
         int[][] matrix1 = matricesGenerator(size);
         int[][] matrix2 = matricesGenerator(size);
 
@@ -27,7 +38,18 @@ public class MatricesMultiplication {
             System.out.println("Two input matrices can not be multiplied");
         }
         else {
+
+            startTime = System.nanoTime();
+            for(int count = 0; count < range; count++) {
+                classicalMultiply.classicalMultiplication(matrix1, matrix2);
+            }
             matricesDisplay(classicalMultiply.classicalMultiplication(matrix1, matrix2));
+            //matricesDisplay(classicalMultiply.classicalMultiplication(matrix1, matrix2));
+            endTime = System.nanoTime();
+            duration = endTime - startTime;
+            System.out.println("The total execution time of " + range + " sample size (nano time) is: " + duration + " nano time");
+            System.out.println("The total execution time of " + range + " sample size (milliseconds) is: " + (duration / 1000000.0) + " milliseconds");
+            System.out.println("The average execution time of " + range + " sample size (milliseconds) is: " + (duration / range) / 1000000.0 + " milliseconds");
         }
         
     }
