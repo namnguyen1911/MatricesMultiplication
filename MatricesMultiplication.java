@@ -38,12 +38,14 @@ public class MatricesMultiplication {
         scan.nextLine();
 
         while(true) {
+            System.out.println("===========================================================");
             System.out.println("Option: ");
             System.out.println("1. Classical Multiplication");
             System.out.println("2. Naive Divide and Conquer Multiplication");
             System.out.println("3. Strassen's Multiplication");
             System.out.println("4. Quit");
             System.out.print("Enter your option: ");
+            System.out.println("===========================================================");
             option = scan.nextInt();
 
             if(option == 1) {
