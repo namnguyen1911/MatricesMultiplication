@@ -86,21 +86,21 @@ public class StrassensMultiplication {
 
         //A12
         for(int i = 0; i < matrix12.length; i++) {
-            for (int j = matrix12.length + 1, colBegin = 0; j < matrix12.length; j++, colBegin++ ) {
+            for (int j = matrix12.length + 1, colBegin = 0; j < matrix12.length * 2 + 1; j++, colBegin++ ) {
                 matrix[i][j] = matrix[i][colBegin];
             }
         }
 
         //A21
-        for(int i = matrix21.length + 1, rowBegin = 0; i < matrix21.length; i++, rowBegin++) {
+        for(int i = matrix21.length + 1, rowBegin = 0; i < matrix21.length * 2 + 1; i++, rowBegin++) {
             for(int j = 0; j < matrix21.length; j++) {
                 matrix[i][j] = matrix21[rowBegin][j];
             }
         }
 
         //A22
-        for(int i = matrix22.length + 1, rowBegin = 0; i < matrix12.length; i++, rowBegin++) {
-            for (int j = matrix12.length + 1, colBegin = 0; j < matrix12.length; j++, colBegin++ ) {
+        for(int i = matrix22.length + 1, rowBegin = 0; i < matrix12.length * 2 + 1; i++, rowBegin++) {
+            for (int j = matrix12.length + 1, colBegin = 0; j < matrix12.length * 2 + 1; j++, colBegin++ ) {
                 matrix[i][j] = matrix[rowBegin][colBegin];
             }
         }
