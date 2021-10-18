@@ -28,4 +28,5 @@ public class ClassicalMultiplication {
             return matrix;
         }
     }
+
 }
