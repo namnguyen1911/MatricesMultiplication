@@ -44,8 +44,9 @@ public class MatricesMultiplication {
             System.out.println("2. Naive Divide and Conquer Multiplication");
             System.out.println("3. Strassen's Multiplication");
             System.out.println("4. Quit");
-            System.out.print("Enter your option: ");
             System.out.println("===========================================================");
+            System.out.print("Enter your option: ");
+            
             option = scan.nextInt();
 
             if(option == 1) {
