@@ -18,19 +18,19 @@ public class StrassensMultiplication {
             //A11
             int [][] a11 = copyMatrix(matrix1, 0, 0, n);
             //A12
-            int [][] a12 = copyMatrix(matrix1, 0, n + 1, n);
+            int [][] a12 = copyMatrix(matrix1, 0, n , n);
             //A13
-            int [][] a21 = copyMatrix(matrix1, n + 1, 0, n);
+            int [][] a21 = copyMatrix(matrix1, n , 0, n);
             //A14
-            int [][] a22 = copyMatrix(matrix1, n + 1, n + 1, n);
+            int [][] a22 = copyMatrix(matrix1, n , n , n);
             //A21
             int [][] b11 = copyMatrix(matrix2, 0, 0, n);
             //A22
-            int [][] b12 = copyMatrix(matrix2, 0, n + 1, n);
+            int [][] b12 = copyMatrix(matrix2, 0, n , n);
             //A23
-            int [][] b21 = copyMatrix(matrix2, n + 1, 0, n);
+            int [][] b21 = copyMatrix(matrix2, n , 0, n);
             //A24
-            int [][] b22 = copyMatrix(matrix2, n + 1, n + 1, n);
+            int [][] b22 = copyMatrix(matrix2, n , n , n);
 
             //M1
             int [][] m1 = strassensMultiplication(matricesAddition('+', a11, a22), matricesAddition('+', b11, b22));
@@ -48,7 +48,8 @@ public class StrassensMultiplication {
             int [][] m7 = strassensMultiplication(matricesAddition('-', a12, a22), matricesAddition('+', b21, b22));
 
             //M1 + M4 - M5 + M7
-            int [][] c11 = matricesAddition('-',matricesAddition('+',m1,m4),matricesAddition('+', m5, m7));
+            //int [][] c11 = matricesAddition('-',matricesAddition('+',m1,m4),matricesAddition('+', m5, m7));
+            int [][] c11 = matricesAddition('+',matricesAddition('-',matricesAddition('+',m1,m4),m5),m7);
 
             //M3 + M5
             int [][] c12 = matricesAddition('+',m3,m5);
@@ -57,7 +58,8 @@ public class StrassensMultiplication {
             int [][] c21 = matricesAddition('+',m2,m4);
 
             //M1 + M3 - M2 + M6
-            int [][] c22 = matricesAddition('-', matricesAddition('+',m1,m3), matricesAddition('+', m2, m6));
+            //int [][] c22 = matricesAddition('-', matricesAddition('+',m1,m3), matricesAddition('+', m2, m6));
+            int [][] c22 = matricesAddition('+',matricesAddition('-',matricesAddition('+',m1,m3),m2),m6);
 
             return joinMatrix(c11,c12,c21,c22);
         }
@@ -68,7 +70,7 @@ public class StrassensMultiplication {
         int [][] copyMatrix = new int[size][size];
         for(int i = rowIndex, beginRow = 0; i < size + rowIndex; i++,beginRow++) {
             for(int j = colIndex, beginCol = 0; j < size + colIndex; j++, beginCol++) {
-                copyMatrix[beginRow][beginCol] = matrix[rowIndex][colIndex];
+                copyMatrix[beginRow][beginCol] = matrix[i][j];
             }
         }
         return copyMatrix;
@@ -87,7 +89,7 @@ public class StrassensMultiplication {
         //A12
         for(int i = 0; i < matrix12.length; i++) {
             for (int j = matrix12.length, colBegin = 0; j < matrix12.length * 2; j++, colBegin++ ) {
-                matrix[i][j] = matrix[i][colBegin];
+                matrix[i][j] = matrix12[i][colBegin];
             }
         }
 
@@ -101,7 +103,7 @@ public class StrassensMultiplication {
         //A22
         for(int i = matrix22.length, rowBegin = 0; i < matrix12.length * 2; i++, rowBegin++) {
             for (int j = matrix12.length, colBegin = 0; j < matrix12.length * 2; j++, colBegin++ ) {
-                matrix[i][j] = matrix[rowBegin][colBegin];
+                matrix[i][j] = matrix22[rowBegin][colBegin];
             }
         }
 
