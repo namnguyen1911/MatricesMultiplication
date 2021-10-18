@@ -5,10 +5,10 @@ public class MatricesMultiplication {
     public static void main(String[] args) {
         //Declaration and Initialization
         Scanner scan = new Scanner(System.in);
-        int size = 0;
+        int size = 0, range = 0, option = 0;
         ClassicalMultiplication classicalMultiply = new ClassicalMultiplication();
+        StrassensMultiplication strassensMultiply = new StrassensMultiplication();
         long startTime = 0, endTime = 0, duration = 0;
-        int range = 0;
 
 
         //Prompt user enter the size of matrices
@@ -22,6 +22,16 @@ public class MatricesMultiplication {
         //Prompt user enter the sample size of the test
         System.out.print("Enter the sample size of the test: ");
         range = scan.nextInt();
+        System.out.print("\n");
+
+        //Remove the new line character in the input buffer
+        scan.nextLine();
+
+        System.out.println("Option: ");
+        System.out.println("1. Classical Multiplication");
+        System.out.println("2. Naive Divide and Conquer Multiplication");
+        System.out.println("3. Strassen's Multiplication");
+        option = scan.nextInt();
 
         // Sqaure Matrices generation
         int[][] matrix1 = matricesGenerator(size);
@@ -32,35 +42,77 @@ public class MatricesMultiplication {
         matricesDisplay(matrix1);
         System.out.println("Matrix 2:");
         matricesDisplay(matrix2);
-        System.out.println("The result by using classical multiplication: ");
 
-        //Check if two matrices can be multiplied
-        if(classicalMultiply.classicalMultiplication(matrix1, matrix2) == null) {
-            System.out.println("Two input matrices can not be multiplied");
+        if(option == 1) {
+            System.out.println("The result by using classical multiplication: ");
+
+            //Check if two matrices can be multiplied
+            if(classicalMultiply.classicalMultiplication(matrix1, matrix2) == null) {
+                System.out.println("Two input matrices can not be multiplied");
+            }
+            else {
+                //Record the starting time of the algorithm
+                startTime = System.nanoTime();
+
+                //Run the algorithm
+                for(int count = 0; count < range; count++) {
+                    classicalMultiply.classicalMultiplication(matrix1, matrix2);
+                }
+
+                //Display the result of multiplication on the screen
+                matricesDisplay(classicalMultiply.classicalMultiplication(matrix1, matrix2));
+        
+                //Record the ending time of the algorithm
+                endTime = System.nanoTime();
+
+                //Calculate the duration of the execution
+                duration = endTime - startTime;
+
+                //Display the total and average time of execution on the screen
+                System.out.println("The total execution time of " + range + " sample size (nano time) is: " + duration + " nano time");
+                System.out.println("The total execution time of " + range + " sample size (milliseconds) is: " + (duration / 1000000.0) + " milliseconds");
+                System.out.println("The average execution time of " + range + " sample size (milliseconds) is: " + (duration / range) / 1000000.0 + " milliseconds");
+            }
+        }
+        else if (option == 2) {
+            System.out.println("Have not implemented yet");
+        }
+        else if (option == 3) {
+            System.out.println("The result by using classical multiplication: ");
+
+            //Check if two matrices can be multiplied
+            if(strassensMultiply.strassensMultiplication(matrix1, matrix2) == null) {
+                System.out.println("Two input matrices can not be multiplied");
+            }
+            else {
+                //Record the starting time of the algorithm
+                startTime = System.nanoTime();
+
+                //Run the algorithm
+                for(int count = 0; count < range; count++) {
+                    strassensMultiply.strassensMultiplication(matrix1, matrix2);
+                }
+
+                //Display the result of multiplication on the screen
+                matricesDisplay(strassensMultiply.strassensMultiplication(matrix1, matrix2));
+        
+                //Record the ending time of the algorithm
+                endTime = System.nanoTime();
+
+                //Calculate the duration of the execution
+                duration = endTime - startTime;
+
+                //Display the total and average time of execution on the screen
+                System.out.println("The total execution time of " + range + " sample size (nano time) is: " + duration + " nano time");
+                System.out.println("The total execution time of " + range + " sample size (milliseconds) is: " + (duration / 1000000.0) + " milliseconds");
+                System.out.println("The average execution time of " + range + " sample size (milliseconds) is: " + (duration / range) / 1000000.0 + " milliseconds");
+            }
         }
         else {
-            //Record the starting time of the algorithm
-            startTime = System.nanoTime();
-
-            //Run the algorithm
-            for(int count = 0; count < range; count++) {
-                classicalMultiply.classicalMultiplication(matrix1, matrix2);
-            }
-
-            //Display the result of multiplication on the screen
-            matricesDisplay(classicalMultiply.classicalMultiplication(matrix1, matrix2));
-    
-            //Record the ending time of the algorithm
-            endTime = System.nanoTime();
-
-            //Calculate the duration of the execution
-            duration = endTime - startTime;
-
-            //Display the total and average time of execution on the screen
-            System.out.println("The total execution time of " + range + " sample size (nano time) is: " + duration + " nano time");
-            System.out.println("The total execution time of " + range + " sample size (milliseconds) is: " + (duration / 1000000.0) + " milliseconds");
-            System.out.println("The average execution time of " + range + " sample size (milliseconds) is: " + (duration / range) / 1000000.0 + " milliseconds");
+            System.out.println("Invalid input!");
         }
+
+        
         
     }
 
