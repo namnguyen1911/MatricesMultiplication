@@ -1,16 +1,25 @@
 public class StrassensMultiplication {
 
+    /**
+     * function calculate multiplication of two matrices
+     * @param matrix1 is the first two-dimentional array (matrix 1)
+     * @param matrix2 is the second two-dimentional array (matrix 2)
+     * @return a matrix which is the production of matrix 1 and matrix 2
+     */
     public int[][] strassensMultiplication(int[][] matrix1, int[][] matrix2) {
+        //Check if the sizes of matrices are power of 2
+        //If not, return null
         if(!isPowerOfTwo(matrix1.length) || !isPowerOfTwo(matrix2.length)) {
             System.out.println("Cannot use Strassen's method!");
             return null;
         }
+        //If the sizes of matrices are equal to 2
+        //Use classical multiplication
         else if (matrix1.length == 2 && matrix2.length == 2) {
             return classicalMultiplication(matrix1, matrix2);
         }
+        //Divide the matrices into 8 smaller matrices
         else {
-            //Create a matrix to hold the product of two matrices
-            //int [][] matrix = new int[matrix1.length][matrix2.length];
 
             //Size of smaller matrices
             int n = matrix1.length / 2;
@@ -48,7 +57,6 @@ public class StrassensMultiplication {
             int [][] m7 = strassensMultiplication(matricesAddition('-', a12, a22), matricesAddition('+', b21, b22));
 
             //M1 + M4 - M5 + M7
-            //int [][] c11 = matricesAddition('-',matricesAddition('+',m1,m4),matricesAddition('+', m5, m7));
             int [][] c11 = matricesAddition('+',matricesAddition('-',matricesAddition('+',m1,m4),m5),m7);
 
             //M3 + M5
@@ -58,24 +66,44 @@ public class StrassensMultiplication {
             int [][] c21 = matricesAddition('+',m2,m4);
 
             //M1 + M3 - M2 + M6
-            //int [][] c22 = matricesAddition('-', matricesAddition('+',m1,m3), matricesAddition('+', m2, m6));
             int [][] c22 = matricesAddition('+',matricesAddition('-',matricesAddition('+',m1,m3),m2),m6);
 
+            //return matrix;
             return joinMatrix(c11,c12,c21,c22);
         }
-        //return matrix;
+        
     }
 
+    /**
+     * function copies element from inputed matrix to other matrix
+     * @param matrix is a two-dimensional array
+     * @param rowIndex is the beginning row of index
+     * @param colIndex is the beginning column of index
+     * @return a copy matrix from indicated indexes of original matrix
+     */
     private int [][] copyMatrix(int [][] matrix, int rowIndex, int colIndex, int size) {
+        //Create a matrix
         int [][] copyMatrix = new int[size][size];
+
+        //Copy elements from matrix to copyMatrix
         for(int i = rowIndex, beginRow = 0; i < size + rowIndex; i++,beginRow++) {
             for(int j = colIndex, beginCol = 0; j < size + colIndex; j++, beginCol++) {
                 copyMatrix[beginRow][beginCol] = matrix[i][j];
             }
         }
+
+        //Return the copyMatrix
         return copyMatrix;
     }
 
+    /** 
+     * functions join 4 smaller matrices into a larger one
+     * @param matrix11 is two-dimensional array (matrix 11)
+     * @param matrix12 is two-dimensional array (matrix 12)
+     * @param matrix21 is two-dimensional array (matrix 21)
+     * @param matrix22 is two-dimensional array (matrix 22)
+     * @return a matrix which is copied from 4 smaller matrices
+    */
     private int[][] joinMatrix(int [][] matrix11, int [][] matrix12, int [][] matrix21, int [][] matrix22) {
 
         int [][] matrix = new int[matrix11.length*2][matrix12.length*2];
@@ -139,6 +167,13 @@ public class StrassensMultiplication {
         }
     }
 
+    /**
+     * function add two matrices
+     * @symbol is indicator which let the function know addition or subtraction
+     * @matrix1 is a two-dimensional array (matrix 1)
+     * @matrix2 is a two-dimentsional array (matrix 2)
+     * @return a matrix
+     */
     private int[][] matricesAddition(char symbol,int[][] matrix1, int[][] matrix2) {
         int[][] matrix = new int[matrix1.length][matrix2.length];
 
@@ -160,6 +195,11 @@ public class StrassensMultiplication {
         return matrix;
     }
 
+    /**
+     * function checks is n is the power of 2 or not
+     * @n is an integer which will be checked
+     * @return whether n is a power of 2 or not
+     */
     private boolean isPowerOfTwo(int n) {
         if(n == 0)
             return false;
