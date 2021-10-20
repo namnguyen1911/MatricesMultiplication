@@ -9,13 +9,13 @@ public class StrassensMultiplication {
     public int[][] strassensMultiplication(int[][] matrix1, int[][] matrix2) {
         //Check if the sizes of matrices are power of 2
         //If not, return null
-        if(!isPowerOfTwo(matrix1.length) || !isPowerOfTwo(matrix2.length)) {
-            System.out.println("Cannot use Strassen's method!");
-            return null;
-        }
+        //if(!isPowerOfTwo(matrix1.length) || !isPowerOfTwo(matrix2.length)) {
+        //    System.out.println("Cannot use Strassen's method!");
+        //    return null;
+        //}
         //If the sizes of matrices are equal to 2
         //Use classical multiplication
-        else if (matrix1.length == 2 && matrix2.length == 2) {
+        if (matrix1.length == 32 && matrix2.length == 32) {
             return classicalMultiplication(matrix1, matrix2);
         }
         //Divide the matrices into 8 smaller matrices

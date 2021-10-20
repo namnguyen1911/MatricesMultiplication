@@ -29,10 +29,10 @@ public class MatricesMultiplication {
         int[][] matrix2 = matricesGenerator(size);
 
         //Display the matrix
-        System.out.println("Matrix 1:");
-        matricesDisplay(matrix1);
-        System.out.println("Matrix 2:");
-        matricesDisplay(matrix2);
+        //System.out.println("Matrix 1:");
+        //matricesDisplay(matrix1);
+        //System.out.println("Matrix 2:");
+        //matricesDisplay(matrix2);
 
         //Remove the new line character in the input buffer
         scan.nextLine();
@@ -66,7 +66,7 @@ public class MatricesMultiplication {
                     }
 
                     //Display the result of multiplication on the screen
-                    matricesDisplay(classicalMultiply.classicalMultiplication(matrix1, matrix2));
+                    //matricesDisplay(classicalMultiply.classicalMultiplication(matrix1, matrix2));
             
                     //Record the ending time of the algorithm
                     endTime = System.nanoTime();
@@ -100,7 +100,7 @@ public class MatricesMultiplication {
                     }
 
                     //Display the result of multiplication on the screen
-                    matricesDisplay(strassensMultiply.strassensMultiplication(matrix1, matrix2));
+                    //matricesDisplay(strassensMultiply.strassensMultiplication(matrix1, matrix2));
             
                     //Record the ending time of the algorithm
                     endTime = System.nanoTime();
