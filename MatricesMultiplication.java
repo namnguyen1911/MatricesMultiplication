@@ -8,6 +8,7 @@ public class MatricesMultiplication {
         int size = 0, range = 0, option = 0;
         ClassicalMultiplication classicalMultiply = new ClassicalMultiplication();
         StrassensMultiplication strassensMultiply = new StrassensMultiplication();
+        DivideConquerMultiplication divideConquer = new DivideConquerMultiplication();
         long startTime = 0, endTime = 0, duration = 0;
 
 
@@ -27,6 +28,7 @@ public class MatricesMultiplication {
         // Sqaure Matrices generation
         int[][] matrix1 = matricesGenerator(size);
         int[][] matrix2 = matricesGenerator(size);
+        
 
         //Display the matrix
         //System.out.println("Matrix 1:");
@@ -81,7 +83,41 @@ public class MatricesMultiplication {
                 }
             }
             else if (option == 2) {
-                System.out.println("Have not implemented yet");
+                System.out.println("The result by using Divide and Conquer multiplication: ");
+
+                //Check if two matrices can be multiplied
+                if(divideConquer.divideConquerMultiplication(matrix1, matrix2) == null) {
+                    System.out.println("Two input matrices can not be multiplied");
+                }
+                else {
+
+                    //Record the starting time of the algorithm
+                    startTime = System.nanoTime();
+
+                    //Run the algorithm
+                    for(int count = 0; count < range; count++) {
+                        divideConquer.divideConquerMultiplication(matrix1, matrix2);
+                    }
+
+                    //Display the result of multiplication on the screen
+                    //matricesDisplay(divideConquer.divideConquerMultiplication(matrix1, matrix2));
+            
+                    //Record the ending time of the algorithm
+                    endTime = System.nanoTime();
+
+                    //Calculate the duration of the execution
+                    duration = endTime - startTime;
+
+                    //Display the matrices and the result
+                    System.out.println("Matrix 1:");
+                    matricesDisplay(matrix1);
+                    System.out.println("Matrix 2:");
+                    matricesDisplay(matrix2);
+                    //Display the total and average time of execution on the screen
+                    System.out.println("The total execution time of " + range + " sample size (nano time) is: " + duration + " nano time");
+                    System.out.println("The total execution time of " + range + " sample size (milliseconds) is: " + (duration / 1000000.0) + " milliseconds");
+                    System.out.println("The average execution time of " + range + " sample size (milliseconds) is: " + (duration / range) / 1000000.0 + " milliseconds");
+                }
             }
             else if (option == 3) {
                 System.out.println("The result by using classical multiplication: ");
