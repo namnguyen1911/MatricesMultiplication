@@ -43,7 +43,6 @@ public class DivideConquerMultiplication {
   
     private int [][] partitionMatrix(int [][] matrix, int rowIndex, int colIndex) {
         int length = matrix.length/2;
-        System.out.println("Length: " + length);
         int [][] newMatrix = new int[length][length];
 
         for(int rowCounter = 0; rowCounter < length; rowCounter++) {
