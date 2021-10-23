@@ -84,7 +84,7 @@ public class MatricesMultiplication {
                 System.out.println("Have not implemented yet");
             }
             else if (option == 3) {
-                System.out.println("The result by using classical multiplication: ");
+                System.out.println("The result by using Strassen's multiplication: ");
 
                 //Check if two matrices can be multiplied
                 if(strassensMultiply.strassensMultiplication(matrix1, matrix2) == null) {
