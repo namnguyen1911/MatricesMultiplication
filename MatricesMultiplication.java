@@ -101,7 +101,7 @@ public class MatricesMultiplication {
                     }
 
                     //Display the result of multiplication on the screen
-                    //matricesDisplay(divideConquer.divideConquerMultiplication(matrix1, matrix2));
+                    matricesDisplay(divideConquer.divideConquerMultiplication(matrix1, matrix2));
             
                     //Record the ending time of the algorithm
                     endTime = System.nanoTime();
@@ -109,11 +109,6 @@ public class MatricesMultiplication {
                     //Calculate the duration of the execution
                     duration = endTime - startTime;
 
-                    //Display the matrices and the result
-                    //System.out.println("Matrix 1:");
-                    //matricesDisplay(matrix1);
-                    //System.out.println("Matrix 2:");
-                    //matricesDisplay(matrix2);
                     //Display the total and average time of execution on the screen
                     System.out.println("The total execution time of " + range + " sample size (nano time) is: " + duration + " nano time");
                     System.out.println("The total execution time of " + range + " sample size (milliseconds) is: " + (duration / 1000000.0) + " milliseconds");
@@ -137,7 +132,7 @@ public class MatricesMultiplication {
                     }
 
                     //Display the result of multiplication on the screen
-                    //matricesDisplay(strassensMultiply.strassensMultiplication(matrix1, matrix2));
+                    matricesDisplay(strassensMultiply.strassensMultiplication(matrix1, matrix2));
             
                     //Record the ending time of the algorithm
                     endTime = System.nanoTime();
