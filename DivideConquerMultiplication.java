@@ -2,7 +2,7 @@ public class DivideConquerMultiplication {
     
     public int[][] divideConquerMultiplication(int[][] matrix1, int[][] matrix2) {
        
-        //return simple multiplication if arrays are of size 1
+        //return simple multiplication if arrays are less than the size of 64
         if (matrix1.length <= 64 && matrix2.length <= 64) {
             return classicalMultiplication(matrix1,matrix2);
         }

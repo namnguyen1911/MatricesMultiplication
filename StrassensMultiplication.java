@@ -13,9 +13,9 @@ public class StrassensMultiplication {
         //    System.out.println("Cannot use Strassen's method!");
         //    return null;
         //}
-        //If the sizes of matrices are equal to 2
+        //If the sizes of matrices are less than to 64
         //Use classical multiplication
-        if (matrix1.length == 32 && matrix2.length == 32) {
+        if (matrix1.length <= 64 && matrix2.length <= 64) {
             return classicalMultiplication(matrix1, matrix2);
         }
         //Divide the matrices into 8 smaller matrices
